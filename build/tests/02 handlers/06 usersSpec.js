@@ -1,0 +1,78 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const supertest_1 = __importDefault(require("supertest"));
+const express_1 = __importDefault(require("express"));
+const request = (0, supertest_1.default)(express_1.default);
+describe('Should test the Users endpoint responses', () => {
+    //No token is provided, returning string "Invalid token" & status 401
+    afterEach((done) => { done(); });
+    describe('Should test Index endpoint', () => {
+        afterEach((done) => { done(); });
+        it('Test index responses status', () => {
+            request.get(`/users/`)
+                .then((res) => expect(res.status).toBe(401));
+        });
+        it('Test index responses type', () => {
+            request.get(`/users/`)
+                .then((res) => expect(res.body).toEqual(jasmine.stringContaining("Invalid token, Error: TypeError: Cannot read properties of")));
+        });
+    });
+    describe('Should test show endpoint', () => {
+        afterEach((done) => { done(); });
+        it('Test show responses status', () => {
+            request.get(`/users/someUser`)
+                .then((res) => expect(res.status).toBe(401));
+        });
+        it('Test show responses type', () => {
+            request.get(`/users/someUser`)
+                .then((res) => expect(res.body).toEqual(jasmine.stringContaining("Invalid token, Error: TypeError: Cannot read properties of")));
+        });
+    });
+    describe('Should test create endpoint', () => {
+        afterEach((done) => { done(); });
+        it('Test create responses status', () => {
+            request.post(`/users/`)
+                .then((res) => expect(res.redirect).toBeTrue);
+        });
+        it('Test create responses type', () => {
+            request.post(`/users/`)
+                .then((res) => expect(res.body).toEqual({}));
+        });
+    });
+    describe('Should test update endpoint', () => {
+        afterEach((done) => { done(); });
+        it('Test update responses status', () => {
+            request.put(`/users/someUser`)
+                .then((res) => expect(res.redirect).toBeTrue);
+        });
+        it('Test update responses type', () => {
+            request.put(`/users/someUser`)
+                .then((res) => expect(res.body).toEqual(jasmine.stringContaining("Invalid token, Error: TypeError: Cannot read properties of")));
+        });
+    });
+    describe('Should test delete endpoint', () => {
+        afterEach((done) => { done(); });
+        it('Test delete responses status', () => {
+            request.delete(`/users/someUser`)
+                .then((res) => expect(res.redirect).toBeTrue);
+        });
+        it('Test delete responses type', () => {
+            request.delete(`/users/someUser`)
+                .then((res) => expect(res.body).toEqual(jasmine.stringContaining("Invalid token, Error: TypeError: Cannot read properties of")));
+        });
+    });
+    describe('Should test authenticate endpoint', () => {
+        afterEach((done) => { done(); });
+        it('Test authenticate responses status', () => {
+            request.post(`/users/authenticate/someUser`)
+                .then((res) => expect(res.redirect).toBeTrue);
+        });
+        it('Test authenticate responses type', () => {
+            request.post(`/users/authenticate/someUser`)
+                .then((res) => expect(res.body).toEqual({}));
+        });
+    });
+});
