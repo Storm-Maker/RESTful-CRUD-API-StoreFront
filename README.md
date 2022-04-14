@@ -2,7 +2,7 @@
 
 * [Description](#Description)
 * [Required-Technologies](#Required-Technologies)
-* [Getting-Started](#Getting Started)
+* [Getting-Started](#Getting-Started)
 * [Features](#Features)
 * [Instructions](#Instructions)
 * [Optional-Resources](#Optional-Resources)
@@ -73,34 +73,38 @@ TOKEN_SECRET        = [Assign a token secret]
 ### TO connect to the RESTful Routes:
 
 #### Products - id = Product ID
+```
 - Index         route: '/products'              [GET]
 - Show          route: '/products/:id'          [GET]
 - Create        route: '/products'              [POST]      [Token Required]
 - Update        route: '/products/:id'          [PUT]       [Token Required]
 - Delete        route: '/products/:id'          [DELETE]    [Token Required]
-
+```
 #### Users - user_name = user name
+```
 - Index         route: '/users'                 [GET]       [Token Required]
 - Show          route: '/users/:user_name'      [GET]       [Token Required]
 - Create        route: '/users'                 [POST]
 - Update        route: '/users/:user_name'      [PUT]       [Token Required]
 - Delete        route: '/users/:user_name'      [DELETE]    [Token Required]
 - Authenticate  route: '/users/authenticate'    [POST]
-
+```
 #### Orders - id = product ID
+```
 - Index         route: '/orders'                [GET]       [Token Required]
 - Show          route: '/orders/:id'            [GET]       [Token Required]
 - Create        route: '/orders'                [POST]      [Token Required]
 - Update        route: '/orders/:id'            [PUT]       [Token Required]
 - Delete        route: '/orders/:id'            [DELETE]    [Token Required]
 - Add Product   route: '/orders/:id/products'   [POST]      [Token Required]
-
+```
 #### Dashboard
+```
 - Show user orders:             '/orders-by-user/:user_id'              [GET]    [Token Required]
 - Show user completed orders:   '/completed-orders-by-user/:user_id'    [GET]    [Token Required]
 - Show products by category:    '/list-products-category/:category'     [GET]
 - Show top five products by quantity in orders: '/top-five-products'   
-
+```
 ---
 
 ## Optional-Resources
